@@ -34,11 +34,6 @@
         <version.com.google.gwt>2.6.1</version.com.google.gwt>
         <version.com.gwtplatform>1.2.1</version.com.gwtplatform>
     </properties>
-    <modules>
-        <module>component</module>
-        <module>gwt</module>
-        <module>app</module>
-    </modules>
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -107,4 +102,26 @@
             </snapshots>
         </repository>
     </repositories>
+    <profiles>
+        <profile>
+            <id>wildfly</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <modules>
+                <module>wildfly</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>eap</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <modules>
+                <module>component</module>
+                <module>gwt</module>
+                <module>app</module>
+            </modules>
+        </profile>
+    </profiles>
 </project>
