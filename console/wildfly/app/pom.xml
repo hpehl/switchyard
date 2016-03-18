@@ -44,6 +44,10 @@
             <version>${project.version}</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.jboss.as</groupId>
+            <artifactId>jboss-as-console-core</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -69,27 +73,69 @@
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>../gwt/src/main/java</source>
+                                <source>../gwt/target/dependency/eap/java</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>add-resource</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-resource</goal>
+                        </goals>
+                        <configuration>
+                            <resources>
+                                <resource>
+                                    <directory>../gwt/src/main/resources</directory>
+                                    <targetPath>resources</targetPath>
+                                </resource>
+                                <resource>
+                                    <directory>../gwt/target/dependency/eap/resources</directory>
+                                    <targetPath>resources</targetPath>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.bsc.maven</groupId>
+                <artifactId>maven-processor-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <!-- Must match the id from the parent POM -->
+                        <id>process-spi</id>
+                        <goals>
+                            <goal>process</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <processSourceArtifacts>
+                                <processSourceArtifact>org.jboss.as:jboss-as-console-core:sources</processSourceArtifact>
+                                <processSourceArtifact>org.switchyard.console.wildfly:switchyard-console-wildfly-extension:sources</processSourceArtifact>
+                            </processSourceArtifacts>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
                 <configuration>
                     <!-- fixes the web mode problem -->
                     <fragmentCount>-1</fragmentCount>
                     <persistentunitcachedir>${project.build.directory}</persistentunitcachedir>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>add-source</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <sources>
-                        <source>${project.build.directory}/generated-sources/apt</source>
-                    </sources>
                 </configuration>
             </plugin>
         </plugins>
