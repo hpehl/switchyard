@@ -59,7 +59,7 @@ public class MetricsPresenter extends Presenter<MetricsPresenter.MyView, Metrics
      */
     @ProxyCodeSplit
     @NameToken(NameTokens.METRICS_PRESENTER)
-    @RuntimeExtension(name = NameTokens.RUNTIME_TEXT, group = RuntimeGroup.METRICS, key = NameTokens.SUBSYSTEM)
+    @RuntimeExtension(name = "SwitchYard - Metrics", group = RuntimeGroup.METRICS, key = NameTokens.SUBSYSTEM)
     @AccessControl(resources = {"/{selected.host}/{selected.server}/subsystem=switchyard" })
     public interface MyProxy extends Proxy<MetricsPresenter>, Place {
     }

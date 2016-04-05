@@ -56,7 +56,7 @@ public class ComponentPresenter extends Presenter<ComponentPresenter.MyView, Com
      */
     @ProxyCodeSplit
     @NameToken(NameTokens.SYSTEM_CONFIG_PRESENTER)
-    @SubsystemExtension(name = "Runtime Details", group = "SwitchYard", key = "switchyard")
+    @SubsystemExtension(name = "SwitchYard", group = "SwitchYard", key = "switchyard")
     @AccessControl(resources = {"{selected.profile}/subsystem=switchyard"})
     public interface MyProxy extends Proxy<ComponentPresenter>, Place {
     }

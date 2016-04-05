@@ -51,7 +51,7 @@ public class RuntimePresenter extends TabContainerPresenter<RuntimePresenter.MyV
      */
     @ProxyCodeSplit
     @NameToken(NameTokens.RUNTIME_OPERATIONS_PRESENTER)
-    @RuntimeExtension(name = NameTokens.RUNTIME_TEXT, group = RuntimeGroup.OPERATiONS, key = NameTokens.SUBSYSTEM)
+    @RuntimeExtension(name = "SwitchYard - Apps", group = RuntimeGroup.METRICS, key = NameTokens.SUBSYSTEM)
     @AccessControl(resources = {"/{selected.host}/{selected.server}/subsystem=switchyard" })
     public interface MyProxy extends Proxy<RuntimePresenter> {
     }
