@@ -4,6 +4,7 @@ target
 .idea
 .settings
 .checkstyle
+.DS_Store
 *.sw?
 *.iml
 *.ipr

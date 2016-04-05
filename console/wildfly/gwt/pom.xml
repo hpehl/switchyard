@@ -100,6 +100,7 @@
                             <tasks>
                                 <copy todir="${common.sources.dir}">
                                     <fileset dir="../../gwt/src/main/java/" includes="**/*.*">
+                                        <exclude name="org/switchyard/console/SwitchYard.gwt.xml"/>
                                         <exclude name="org/switchyard/console/client/gin/SwitchYardGinjector.java"/>
                                         <exclude name="org/switchyard/console/client/gin/SwitchYardClientModule.java"/>
                                     </fileset>
